@@ -6,6 +6,6 @@ import pl.pieshakelbery.todo.entity.User;
 import java.util.Collection;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    public Collection<User> getAllByAgeIsGreaterThan(int age);
-    public User getUserByEmail(String email);
+    Collection<User> getAllByAgeIsGreaterThan(int age);
+    User getUserByEmail(String email);
 }

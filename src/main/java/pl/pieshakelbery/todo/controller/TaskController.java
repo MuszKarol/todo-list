@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TaskController {
 
-    @GetMapping("/random")
-    public String greeting(Model model) {
-        model.addAttribute("task", "random");
-        return "random";
+    @GetMapping("/tasks")
+    public String tasks(Model model) {
+        model.addAttribute("task", "test-test-test-test");
+        return "tasks";
     }
+
+
 }

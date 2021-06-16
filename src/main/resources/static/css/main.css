@@ -5,7 +5,8 @@ body {
     height: 100vh;
     padding: 0;
     margin: 0;
-    background: linear-gradient(to top right, #ff99ff 0%, #33ccff 100%);
+    background: linear-gradient(to top, #5f2c82, #49a09d);
+
 }
 
 .login-container{
@@ -29,14 +30,44 @@ label{
     font-size: 20px;
     text-align: left;
     font-family: Helvetica, sans-serif;
-    color: #003366;
+    color: white;
 }
 
 input{
     height: 2em;
     margin-top: 1em;
     border:none;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid white;
     font-size: 16px;
     background: transparent;
+    color: white;
 }
+
+.buttons-container {
+    align-items: center;
+}
+
+.btn {
+    margin-top: 1em;
+    width: 75%;
+    box-shadow:inset 0px -2px 7px 0px #0083bf;
+    background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    border-radius:1px;
+    border:1px solid #0b0e07;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Helvetica, sans-serif;
+    font-size:15px;
+    padding:9px 23px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #263666;
+}
+.btn:hover {
+    background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+}
+.btn:active {
+    position:relative;
+    top:1px;
+}
+
