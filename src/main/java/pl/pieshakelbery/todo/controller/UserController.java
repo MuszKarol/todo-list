@@ -24,6 +24,6 @@ public class UserController {
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute User user) {
         userService.save(user);
-        return "index";
+        return "add-user";
     }
 }

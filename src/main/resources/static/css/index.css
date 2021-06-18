@@ -1,0 +1,6 @@
+.login-container>div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3em;
+    width: 100%;
+}
