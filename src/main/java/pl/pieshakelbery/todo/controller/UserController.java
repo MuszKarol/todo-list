@@ -18,12 +18,12 @@ public class UserController {
     @GetMapping("/add-user")
     public String userForm(Model model){
         model.addAttribute("user", new User());
-        return "add-user";
+        return "register";
     }
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute User user) {
         userService.save(user);
-        return "add-user";
+        return "register";
     }
 }
