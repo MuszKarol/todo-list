@@ -25,5 +25,6 @@ public class UserController {
     public String createUser(@ModelAttribute User user) {
         userService.save(user);
         return "register";
+        //return "redirect:/index";
     }
 }
