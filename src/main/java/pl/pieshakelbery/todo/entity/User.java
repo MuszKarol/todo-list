@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -21,5 +21,5 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
-    private int age;
+    private Date age;
 }

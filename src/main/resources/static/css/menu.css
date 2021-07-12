@@ -1,13 +1,36 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     background-color: #327a9a;
     height: 8vh;
     width: 100%;
-    color: white;
     position: fixed;
     overflow: hidden;
     top: 0;
     box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.75);
+    z-index: 2;
+}
+
+.navbar-element {
+    box-shadow: inset 0px 0px 0px 0px #47a1ad;
+    background-color: #47a1ad;
+    border: 1px solid #ffffff;
+    display: inline-block;
+    cursor: pointer;
+    color: #fffaff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+}
+
+.navbar-element:hover {
+    background-color: #2f7d91;
+}
+
+.navbar-element:active {
+    position: relative;
+    top: 1px;
 }
