@@ -9,4 +9,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Integer> {
     List<Task> getAllByUser(User user);
     List<Task> findAll();
+    void deleteById(int id);
 }

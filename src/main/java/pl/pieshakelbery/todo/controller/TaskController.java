@@ -3,6 +3,7 @@ package pl.pieshakelbery.todo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.pieshakelbery.todo.service.TaskService;
 import pl.pieshakelbery.todo.service.UserService;
 
@@ -21,7 +22,13 @@ public class TaskController {
     public String tasks(Model model) {
         model.addAttribute("tasks", taskService.getAllTasksByUser(
                 userService.getUserByEmail("test@test.test")));
-        return "tasks";
+        return "task";
+    }
+
+    @GetMapping(value = "/delete_task/{id}")
+    public String deleteTask(@PathVariable("id") int id){
+        taskService.deleteTaskById(id);
+        return "redirect:/tasks";
     }
 
 

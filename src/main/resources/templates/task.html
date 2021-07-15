@@ -9,13 +9,13 @@
 </head>
 <body>
     <div class="navbar">
-        <a class="navbar-element" href="">Home</a>
-        <a class="navbar-element" href="">Add-task</a>
-        <a class="navbar-element" href="">Account</a>
+        <a class="navbar-element" th:href="@{/tasks/}">Home</a>
+        <a class="navbar-element" th:href="@{/}">Add-task</a>
+        <a class="navbar-element" th:href="@{/}">Account</a>
     </div>
     <div class="tasks-container">
         <div class="task" th:each="task: ${tasks}">
-            <a onclick="" class="close"></a>
+            <a th:href="@{/delete_task/{id}(id = ${task.getId()})}" class="close"></a>
             <h1 th:text="${task.getTitle()}"></h1>
             <p th:text="${task.getDescription()}"></p>
         </div>
