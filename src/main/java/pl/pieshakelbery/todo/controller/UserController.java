@@ -23,6 +23,7 @@ public class UserController {
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute User user) {
+        System.out.println("User account has been saved");
         userService.save(user);
         return "register";
         //return "redirect:/index";

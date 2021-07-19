@@ -7,7 +7,25 @@
     margin-top: 8vh;
 }
 
-.task {
+.add-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.add-task>input, .add-task>textarea {
+    border-bottom-color: black;
+    color: black;
+    width: 70%;
+    margin: 0;
+}
+
+.add-task>textarea {
+    height: 4em;
+    resize: none;
+}
+
+.task, .add-task {
     position: relative;
     align-items: center;
     background-color: rgba(255, 254, 253, 0.85);
@@ -17,7 +35,7 @@
     z-index: 1;
 }
 
-.close {
+.close, .add-button {
     position: absolute;
     top: 8px;
     right: 16px;
@@ -26,12 +44,12 @@
     opacity: 0.4;
 }
 
-.close:hover {
+.close:hover, .add-button {
     opacity: 1;
     cursor: pointer;
 }
 
-.close:before, .close:after {
+.close:before, .close:after, .add-button:before, .add-button:after {
     position: absolute;
     top: 8px;
     right: 16px;
@@ -41,10 +59,22 @@
     background-color: red;
 }
 
+.add-button:before, .add-button:after {
+    background-color: green;
+}
+
 .close:before {
     transform: rotate(45deg);
 }
 
 .close:after {
     transform: rotate(-45deg);
+}
+
+.add-button:before {
+    transform: rotate(90deg);
+}
+
+.add-button:after {
+    transform: rotate(0deg);
 }

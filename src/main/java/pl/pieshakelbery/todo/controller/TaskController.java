@@ -21,7 +21,7 @@ public class TaskController {
     @GetMapping("/tasks")
     public String tasks(Model model) {
         model.addAttribute("tasks", taskService.getAllTasksByUser(
-                userService.getUserByEmail("test@test.test")));
+                userService.getUserByEmail("test")));
         return "task";
     }
 

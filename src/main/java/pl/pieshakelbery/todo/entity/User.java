@@ -22,4 +22,6 @@ public class User {
     private String email;
     private String password;
     private Date age;
+    private boolean active = true;
+    private String role = "USER";
 }
