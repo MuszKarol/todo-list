@@ -8,18 +8,17 @@
     <link th:href="@{/css/task.css}" rel="stylesheet" />
 </head>
 <body>
-    <form class="navbar" th:action="@{/logout}">
-        <a class="navbar-element" th:href="@{/tasks/}">Add-task</a>
+    <form class="navbar" th:action="@{/logout}" method="post">
+        <a class="navbar-element" th:href="@{/}">Home</a>
         <a class="navbar-element" th:href="@{/}">Account</a>
-        <a class="navbar-element" type="submit">Logout</a>
-<!--        FIXME-->
+        <button class="navbar-element" type="submit" value="Logout">Logout</button>
     </form>
     <div class="tasks-container">
-        <div class="add-task">
-            <a class="add-button"></a>
-            <input placeholder="Title">
-            <textarea placeholder="Description"></textarea>
-        </div>
+        <form class="add-task" th:action="@{/save-task}" th:object="${x}" method="post">
+            <input placeholder="Title" th:field="*{title}">
+            <textarea placeholder="Description" th:field="*{description}"></textarea>
+            <button class="add-button" type="submit"></button>
+        </form>
         <div class="task" th:each="task: ${tasks}">
             <a th:href="@{/delete_task/{id}(id = ${task.getId()})}" class="close"></a>
             <h1 th:text="${task.getTitle()}"></h1>

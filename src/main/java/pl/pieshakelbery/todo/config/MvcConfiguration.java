@@ -18,6 +18,7 @@ public class MvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry viewControllerRegistry) {
         viewControllerRegistry.addViewController("/login").setViewName("login");
+        viewControllerRegistry.addViewController("/").setViewName("task");
         viewControllerRegistry.addViewController("/tasks").setViewName("task");
         viewControllerRegistry.addViewController("/add-user").setViewName("register");
     }

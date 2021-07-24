@@ -1,5 +1,6 @@
 package pl.pieshakelbery.todo.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pieshakelbery.todo.service.UserDetailsServiceImpl;
 
+@Slf4j
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -40,11 +42,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
+//                .csrf()
+//                        .disable()
                 .authorizeRequests()
-                        .antMatchers("/add-user").permitAll()
+                        .antMatchers().permitAll()
                         .anyRequest().authenticated()
                         .and()
                 .formLogin()
@@ -57,12 +62,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .permitAll()
                         .and()
                 .logout()
-                        .logoutUrl("/logout") //FIXME
-                        .permitAll();
+                        .permitAll()
+                        .logoutUrl("/logout")
+                        .logoutSuccessHandler(
+                                (httpServletRequest, httpServletResponse, authentication) -> {
+                                    log.info("-> " + authentication.getName() + " logged out."); //REMOVE
+                                    httpServletResponse.sendRedirect("/login");
+                        });
     }
 
     @Override
-    public void configure(WebSecurity web) {
+    public void configure(WebSecurity web){
+        web.ignoring().antMatchers("/add-user");
         web.ignoring().antMatchers("/css/**");
         web.ignoring().antMatchers("/scripts/**");
         web.ignoring().antMatchers("/images/**");

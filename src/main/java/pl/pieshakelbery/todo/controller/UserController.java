@@ -22,10 +22,9 @@ public class UserController {
     }
 
     @PostMapping(value = "/save-user")
-    public String createUser(@ModelAttribute User user) {
-        System.out.println("User account has been saved");
+    public String createUser(@ModelAttribute User user) throws Exception{
         userService.save(user);
-        return "register";
+        return "";
         //return "redirect:/index";
     }
 }
