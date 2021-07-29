@@ -53,7 +53,6 @@ public class TaskController {
     public String deleteTask(@PathVariable("id") int id){
         taskService.deleteTaskById(id);
 
-        //return "redirect:/tasks";
         return "redirect:/";
     }
 

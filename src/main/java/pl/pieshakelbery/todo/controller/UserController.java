@@ -15,7 +15,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/add-user")
+    @GetMapping("/register")
     public String userForm(Model model){
         model.addAttribute("user", new User());
         return "register";
@@ -23,8 +23,8 @@ public class UserController {
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute User user) throws Exception{
+        System.out.println(user.getAge());
         userService.save(user);
-        return "";
-        //return "redirect:/index";
+        return "redirect:/";
     }
 }
