@@ -67,14 +67,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .logoutSuccessHandler(
                                 (httpServletRequest, httpServletResponse, authentication) -> {
                                     log.info("-> " + authentication.getName() + " logged out."); //REMOVE
-                                    httpServletResponse.sendRedirect("/login");
+                                    httpServletResponse.sendRedirect("/");
                         });
     }
 
     @Override
     public void configure(WebSecurity web){
+        web.ignoring().antMatchers("/");
+        web.ignoring().antMatchers("/index");
         web.ignoring().antMatchers("/register");
         web.ignoring().antMatchers("/save-user");
+        web.ignoring().antMatchers("/css/**");
+        web.ignoring().antMatchers("/scripts/**");
+        web.ignoring().antMatchers("/images/**");
     }
 
 }

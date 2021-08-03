@@ -23,7 +23,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping(value = {"/tasks", "/"})
+    @GetMapping("/tasks")
     public String tasks( Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
@@ -45,7 +45,7 @@ public class TaskController {
 
         taskService.save(x);
 
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
 
@@ -53,7 +53,7 @@ public class TaskController {
     public String deleteTask(@PathVariable("id") int id){
         taskService.deleteTaskById(id);
 
-        return "redirect:/";
+        return "redirect:/tasks";
     }
 
 
