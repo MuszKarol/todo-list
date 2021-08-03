@@ -75,9 +75,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web){
         web.ignoring().antMatchers("/register");
         web.ignoring().antMatchers("/save-user");
-        web.ignoring().antMatchers("/css/**");
-        web.ignoring().antMatchers("/scripts/**");
-        web.ignoring().antMatchers("/images/**");
     }
 
 }
