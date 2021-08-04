@@ -23,6 +23,7 @@ p {
     padding-inline: 1em;
     margin: 0;
     overflow-y: auto;
+    color:  #443f3fa1;
 }
 
 .add-task {
@@ -65,7 +66,7 @@ p {
     background: none;
 }
 
-.close:hover, .add-button {
+.close:hover, .add-button:hover {
     opacity: 1;
     cursor: pointer;
 }
@@ -77,11 +78,14 @@ p {
     content: ' ';
     height: 33px;
     width: 2px;
-    background-color: red;
 }
 
 .add-button:before, .add-button:after {
     background-color: green;
+}
+
+.close:before, .close:after {
+    background-color: red;
 }
 
 .close:before {

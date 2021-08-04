@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Welcome page</title>
+    <title>TODO</title>
     <link th:href="@{/css/main.css}" rel="stylesheet" />
     <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
 <body>
-<button th:onclick="|window.open('tasks', '_self')|">Login</button>
-<button th:onclick="|window.open('register')|">Register</button>
+    <div class="btn-container">
+        <button class="btn" th:onclick="|window.open('tasks', '_self')|">Login</button>
+        <button class="btn" th:onclick="|window.open('register')|">Register</button>
+    </div>
 </body>
 </html>
