@@ -23,7 +23,6 @@ public class UserController {
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute User user) throws Exception{
-        System.out.println(user.getAge());
         userService.save(user);
         return "redirect:/";
     }

@@ -13,15 +13,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pieshakelbery.todo.service.UserDetailsServiceImpl;
 
-@Slf4j
+import javax.annotation.Resource;
+
+//@Slf4j
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return new UserDetailsServiceImpl();
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService(){
+//        return new UserDetailsServiceImpl();
+//    }
+
+    @Resource
+    private UserDetailsServiceImpl userDetailsService;
 
     @Bean
     public BCryptPasswordEncoder encodePass(){
@@ -31,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(encodePass());
 
         return authProvider;
@@ -66,7 +71,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .logoutUrl("/logout")
                         .logoutSuccessHandler(
                                 (httpServletRequest, httpServletResponse, authentication) -> {
-                                    log.info("-> " + authentication.getName() + " logged out."); //REMOVE
                                     httpServletResponse.sendRedirect("/");
                         });
     }
