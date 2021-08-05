@@ -13,8 +13,8 @@
         <button class="navbar-element" type="submit" value="Logout">Logout</button>
     </form>
     <div class="tasks-container">
-        <form class="add-task" th:action="@{/save-task}" th:object="${x}" method="post">
-            <input placeholder="Title" th:field="*{title}">
+        <form class="add-task" th:action="@{/save-task}" th:object="${newTask}" method="post">
+            <input placeholder="Title" th:field="${newTask.title}">
             <textarea placeholder="Description" th:field="*{description}"></textarea>
             <button class="add-button" type="submit"></button>
         </form>

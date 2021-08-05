@@ -1,3 +1,7 @@
+body {
+    min-height: 92vh;
+}
+
 .tasks-container {
     padding: 3em;
     display: grid;
@@ -40,7 +44,7 @@ p {
 }
 
 .add-task>textarea {
-    height: 4em;
+    height: 8em;
     resize: none;
 }
 
