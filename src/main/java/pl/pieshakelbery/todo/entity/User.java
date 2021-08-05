@@ -29,14 +29,10 @@ public class User {
     private String password;
     private Date age;
 
-    @Type(type= "org.hibernate.type.BooleanType")
-//    @Column(columnDefinition = "BOOL default true")
-    private boolean active = true;
+    @Column(columnDefinition = "BOOL default TRUE")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    public boolean active = true;
 
-//    @Column(columnDefinition = "TINYINT")
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
-//    public boolean active = true;
-
-
+    @Column(columnDefinition = "VARCHAR(25) default 'USER'")
     private String role = "USER";
 }

@@ -22,6 +22,7 @@ public class TaskService {
 
     public List<TaskDTO> getAllTasksByUser(UserDTO userDTO) {
         User user = UserMapper.INSTANCE.userDtoToUser(userDTO);
+
         return TaskMapper.INSTANCE.taskListToTaskDtoList(taskRepository.getAllByUser(user));
     }
 
@@ -32,7 +33,9 @@ public class TaskService {
     public void save(TaskDTO taskDTO, UserDTO userDTO){
         User user = UserMapper.INSTANCE.userDtoToUser(userDTO);
         Task task = TaskMapper.INSTANCE.taskDtoToTask(taskDTO);
+
         task.setUser(user);
+
         taskRepository.save(task);
     }
 }

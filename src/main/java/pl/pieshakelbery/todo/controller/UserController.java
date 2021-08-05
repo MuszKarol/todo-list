@@ -19,13 +19,14 @@ public class UserController {
     @GetMapping("/register")
     public String userForm(Model model){
         model.addAttribute("user", new User());
+
         return "register";
     }
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute UserDTO user){
-        System.out.println(user.toString());
         userService.save(user);
+
         return "redirect:/";
     }
 }
