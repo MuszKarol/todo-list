@@ -9,21 +9,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pieshakelbery.todo.service.UserDetailsServiceImpl;
 
 import javax.annotation.Resource;
 
-//@Slf4j
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//        return new UserDetailsServiceImpl();
-//    }
 
     @Resource
     private UserDetailsServiceImpl userDetailsService;
@@ -43,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -63,7 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .passwordParameter("pass")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/tasks")
-                        .failureForwardUrl("/login_failure_handler")
+                        .failureUrl("/login_failure_handler")
                         .permitAll()
                         .and()
                 .logout()
@@ -80,6 +73,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/");
         web.ignoring().antMatchers("/index");
         web.ignoring().antMatchers("/register");
+        web.ignoring().antMatchers("/login_failure_handler");
+        web.ignoring().antMatchers("/register_failure_handler");
         web.ignoring().antMatchers("/save-user");
         web.ignoring().antMatchers("/css/**");
         web.ignoring().antMatchers("/scripts/**");

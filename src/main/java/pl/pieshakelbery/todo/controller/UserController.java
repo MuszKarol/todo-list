@@ -1,5 +1,6 @@
 package pl.pieshakelbery.todo.controller;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,14 @@ public class UserController {
 
     @PostMapping(value = "/save-user")
     public String createUser(@ModelAttribute UserDTO user){
-        userService.save(user);
+        try {
+            userService.save(user);
+        }catch (DataIntegrityViolationException exception){
+            exception.getMessage();
+            return "redirect:/register_failure_handler";
+        }catch (Exception exception){
+            return "redirect:/register_failure_handler";
+        }
 
         return "redirect:/";
     }

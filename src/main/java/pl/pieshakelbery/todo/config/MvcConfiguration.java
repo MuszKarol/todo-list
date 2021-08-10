@@ -22,6 +22,8 @@ public class MvcConfiguration implements WebMvcConfigurer {
         viewControllerRegistry.addViewController("/index").setViewName("index");
         viewControllerRegistry.addViewController("/tasks").setViewName("task");
         viewControllerRegistry.addViewController("/register").setViewName("register");
+        viewControllerRegistry.addViewController("/login_failure_handler").setViewName("error");
+        viewControllerRegistry.addViewController("/register_failure_handler").setViewName("error");
     }
 
     @Override
