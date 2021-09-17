@@ -3,17 +3,16 @@ package pl.pieshakelbery.todo.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Repository;
 import pl.pieshakelbery.todo.dto.TaskDTO;
 import pl.pieshakelbery.todo.entity.Task;
 
 import java.util.List;
 
 
+@Repository
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
-
-    TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
 
     @Mappings({
             @Mapping(target = "id", source = "task.id"),

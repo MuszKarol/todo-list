@@ -11,16 +11,17 @@ import pl.pieshakelbery.todo.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
-
+    private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public void save(UserDTO userDTO){
-        User user = UserMapper.INSTANCE.userDtoToUser(userDTO);
+        User user = userMapper.userDtoToUser(userDTO);
 
         String password = user.getPassword();
         password = bCryptPasswordEncoder.encode(password);
@@ -30,6 +31,6 @@ public class UserService {
     }
 
     public UserDTO getUserByEmail(String email) {
-        return UserMapper.INSTANCE.userToUserDTO(userRepository.getUserByEmail(email));
+        return userMapper.userToUserDTO(userRepository.getUserByEmail(email));
     }
 }

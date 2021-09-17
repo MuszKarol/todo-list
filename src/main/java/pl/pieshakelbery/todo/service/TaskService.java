@@ -15,15 +15,19 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private final TaskMapper taskMapper;
+    private final UserMapper mapper;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper, UserMapper mapper) {
         this.taskRepository = taskRepository;
+        this.taskMapper = taskMapper;
+        this.mapper = mapper;
     }
 
     public List<TaskDTO> getAllTasksByUser(UserDTO userDTO) {
-        User user = UserMapper.INSTANCE.userDtoToUser(userDTO);
+        User user = mapper.userDtoToUser(userDTO);
 
-        return TaskMapper.INSTANCE.taskListToTaskDtoList(taskRepository.getAllByUser(user));
+        return taskMapper.taskListToTaskDtoList(taskRepository.getAllByUser(user));
     }
 
     public void deleteTaskById(int id) {
@@ -31,8 +35,8 @@ public class TaskService {
     }
 
     public void save(TaskDTO taskDTO, UserDTO userDTO){
-        User user = UserMapper.INSTANCE.userDtoToUser(userDTO);
-        Task task = TaskMapper.INSTANCE.taskDtoToTask(taskDTO);
+        User user = mapper.userDtoToUser(userDTO);
+        Task task = taskMapper.taskDtoToTask(taskDTO);
 
         task.setUser(user);
 

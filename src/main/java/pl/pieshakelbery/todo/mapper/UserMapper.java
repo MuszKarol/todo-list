@@ -3,21 +3,14 @@ package pl.pieshakelbery.todo.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Repository;
 import pl.pieshakelbery.todo.dto.UserDTO;
 import pl.pieshakelbery.todo.entity.User;
 
+
+@Repository
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-
-    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
-
-//    @Mappings({
-//            @Mapping(target = "id", source = "user.id"),
-//            @Mapping(target = "email", source = "user.email"),
-//            @Mapping(target = "password", source = "user.password"),
-//            @Mapping(target = "age", source = "user.age"),
-//    })
     UserDTO userToUserDTO(User user);
 
     @Mappings({

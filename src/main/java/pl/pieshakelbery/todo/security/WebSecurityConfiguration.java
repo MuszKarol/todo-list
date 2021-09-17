@@ -1,6 +1,5 @@
 package pl.pieshakelbery.todo.security;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -44,8 +43,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
-//                .csrf()
-//                        .disable()
                 .authorizeRequests()
                         .antMatchers().permitAll()
                         .anyRequest().authenticated()
