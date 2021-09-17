@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tasks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+    <link th:href="@{/css/task.css}" rel="stylesheet" />
+</head>
+<body>
+    <form class="navbar" th:action="@{/logout}" method="post">
+        <a class="navbar-element" th:href="@{/tasks}">Home</a>
+        <button class="navbar-element" type="submit" value="Logout">Logout</button>
+    </form>
+    <div class="tasks-container">
+        <form class="add-task" th:action="@{/save-task}" th:object="${newTask}" method="post">
+            <input placeholder="Title" th:field="${newTask.title}">
+            <textarea placeholder="Description" th:field="*{description}"></textarea>
+            <button class="add-button" type="submit"></button>
+        </form>
+        <div class="task" th:each="task: ${tasks}">
+            <a th:href="@{/delete_task/{id}(id = ${task.getId()})}" class="close"></a>
+            <h1 th:text="${task.getTitle()}"></h1>
+            <p th:text="${task.getDescription()}"></p>
+        </div>
+    </div>
+</body>
+</html>
