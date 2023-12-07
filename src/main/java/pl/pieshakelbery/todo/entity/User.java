@@ -1,9 +1,15 @@
 package pl.pieshakelbery.todo.entity;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
@@ -16,7 +22,7 @@ import java.sql.Date;
         valueColumnName = "GEN_VALUE",
         pkColumnValue = "ID", initialValue = 0, allocationSize = 1)
 @Table(name = "user_account")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "user_tab")

@@ -1,6 +1,7 @@
 package pl.pieshakelbery.todo.service;
 
 import org.springframework.stereotype.Service;
+
 import pl.pieshakelbery.todo.dto.TaskDTO;
 import pl.pieshakelbery.todo.dto.UserDTO;
 import pl.pieshakelbery.todo.entity.Task;
