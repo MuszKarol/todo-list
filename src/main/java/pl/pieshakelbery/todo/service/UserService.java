@@ -2,6 +2,7 @@ package pl.pieshakelbery.todo.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import pl.pieshakelbery.todo.dto.UserDTO;
 import pl.pieshakelbery.todo.entity.User;
 import pl.pieshakelbery.todo.mapper.UserMapper;

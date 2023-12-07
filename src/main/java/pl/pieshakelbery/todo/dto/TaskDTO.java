@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskDTO {
-    public int id;
-    public String title;
-    public String description;
+    private int id;
+    private String title;
+    private String description;
 }

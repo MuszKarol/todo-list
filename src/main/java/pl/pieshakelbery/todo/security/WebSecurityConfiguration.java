@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import pl.pieshakelbery.todo.service.UserDetailsServiceImpl;
 
 import javax.annotation.Resource;
@@ -59,10 +60,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                         .permitAll()
                         .logoutUrl("/logout")
-                        .logoutSuccessHandler(
-                                (httpServletRequest, httpServletResponse, authentication) -> {
-                                    httpServletResponse.sendRedirect("/");
-                        });
+                        .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) ->
+                                httpServletResponse.sendRedirect("/"));
     }
 
     @Override

@@ -1,6 +1,9 @@
 package pl.pieshakelbery.todo.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
 
@@ -9,8 +12,8 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
-    public int id;
-    public String email;
-    public String password;
-    public Date age;
+    private int id;
+    private String email;
+    private String password;
+    private Date age;
 }
